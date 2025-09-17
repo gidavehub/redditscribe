@@ -1,0 +1,196 @@
+/* styles/Home.module.css */
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  background-color: #000;
+  color: white;
+  overflow: hidden;
+  position: relative;
+}
+
+.canvasContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* --- TOOLBAR --- */
+.toolbarContainer {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: rgba(30, 30, 30, 0.85);
+  border-radius: 10px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 20;
+  border: 1px solid #444;
+}
+
+.toolbarButton {
+  background: none;
+  border: none;
+  color: white;
+  padding: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+  position: relative; /* For color picker */
+}
+
+.toolbarButton:hover {
+  background-color: #555;
+}
+
+.toolbarButton.active {
+  background-color: #007AFF;
+  color: white;
+}
+
+.colorPicker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* --- IMAGE PREVIEW --- */
+.imagePreviewContainer {
+  position: absolute;
+  bottom: 110px;
+  left: 20px;
+  z-index: 10;
+}
+
+.imagePreview {
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+  border: 2px solid #555;
+  object-fit: cover;
+}
+
+.removeImageButton {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: rgba(30, 30, 30, 0.8);
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+}
+
+/* --- INPUT CONTAINER (MODIFIED) --- */
+.inputContainer {
+  position: absolute;
+  bottom: 30px;
+  left: 50%; /* Center alignment */
+  transform: translateX(-50%); /* Center alignment */
+  width: 60%; /* New width */
+  max-width: 800px; /* Max width for large screens */
+  min-width: 300px; /* Min width for small screens */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: rgba(30, 30, 30, 0.85);
+  border-radius: 30px;
+  padding: 10px 15px;
+  border: 1px solid transparent;
+  z-index: 10;
+  animation: glow 6s infinite alternate;
+  box-shadow: 0 0 15px #007AFF;
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 15px #007AFF; border-color: #007AFF; }
+  33% { box-shadow: 0 0 15px #00FF7F; border-color: #00FF7F; }
+  66% { box-shadow: 0 0 15px #FFA500; border-color: #FFA500; }
+  100% { box-shadow: 0 0 15px #7B68EE; border-color: #7B68EE; }
+}
+
+.input {
+  flex: 1;
+  color: white;
+  font-size: 16px;
+  margin: 0 10px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+.input::placeholder {
+  color: #999;
+}
+
+.iconRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.iconButton {
+  padding: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.iconButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* --- LISTENING STATE --- */
+.listening {
+  color: #ff3b30;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.activityIndicator {
+  width: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner {
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top: 4px solid #007AFF;
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
